@@ -168,10 +168,10 @@ WHERE ac.claim_status <> 'DENIED'
 GROUP BY m.insurance_company, ac.accident_detail;
 ```
 
-Finally, create a simple [dashboard in Kibana](https://www.elastic.co/guide/en/kibana/current/dashboard-create-new-dashboard.html) with a 1s refresh rate and use the (very rustic) `postgres_datagen.sql` data generator script to periodically insert some records into the Postgres source table, creating visible changes in your results:
+Finally, create a simple [dashboard in Kibana](https://www.elastic.co/guide/en/kibana/7.17/dashboard.html) with a 1s refresh rate and use the (very rustic) `postgres_datagen.sql` data generator script to periodically insert some records into the Postgres source table, creating visible changes in your results:
 
 ```bash
-cat ./postgres_datagen.sql | docker exec -i flink-sql-cdc_postgres_1 psql -U postgres -d postgres
+cat ./postgres_datagen.sql | docker exec -i flink-sql-cdc-postgres-1 psql -U postgres -d postgres
 ```
 
 ![flink-sql-CDC_kibana](https://user-images.githubusercontent.com/23521087/109538607-93fbe300-7ac0-11eb-8840-2ed7b2aafa27.gif)
